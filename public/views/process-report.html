@@ -1,0 +1,138 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+
+            <!-- <h4 class="header-title m-t-0 m-b-30">FILTER</h4> -->
+
+            <form class="form-horizontal" role="form" data-parsley-validate novalidate>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">Date Range</label>
+                        <div class="col-sm-8">
+                            <div class="input-daterange input-group" id="date-range">
+                                <input type="text" class="form-control" id="start"/>
+                                <span class="input-group-addon bg-primary b-0 text-white">to</span>
+                                <input type="text" class="form-control" id="end"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col-lg-6">-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="hori-pass1" class="col-sm-4 control-label">JOB</label>-->
+                        <!--<div class="col-sm-7">-->
+                            <!--<div angucomplete-alt id="userclient" placeholder="Search Job" pause="400"-->
+                                 <!--selected-object="selectJob" remote-url="/api/job/searchJob/"-->
+                                 <!--remote-url-data-field="result" title-field="title" input-class="form-control">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+                <div class="form-group">
+                    <div class="col-sm-offset-5 col-sm-8">
+                        <a type="submit" class="btn btn-primary waves-effect waves-light" ng-click="find()">
+                            Search <i class="fa fa-search"></i>
+                        </a>
+                        <!--<a type="submit" class="btn btn-primary waves-effect waves-light" ng-click="download()">-->
+                        <!--Download EXCEL <i class="fa fa-download"></i>-->
+                        <!--</a>-->
+                        <!-- <a type="submit" class="btn btn-primary waves-effect waves-light" ng-click="downloadpdf()">
+                            Download PDF <i class="fa fa-download"></i>
+                        </a> -->
+                           <a type="submit" class="btn btn-primary waves-effect waves-light"
+                              ng-click="exportToExcel('#exportthis')">
+                               Download Excel <i class="fa fa-download"></i>
+                           </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div><!-- end col -->
+</div>
+
+<div id="exportthis" ng-show="showMe" class="row ng-hide">
+    <div class="col-sm-12">
+        <div class="card-box table-responsive">
+            <h4 class="header-title m-t-0 m-b-30">JOB ESTIMATED/ACTUAL REPORT</h4>
+            <table ng-if="includeMe" id="datatable" border="1"  style="text-color:#000000;"><!-- id="datatable" -->
+                <thead>
+                <tr>
+                    <th style="background-color:#B1A0C7;" rowspan="3">START DATE</th>
+                    <th style="background-color:#B1A0C7;" rowspan="3">CUSTOMER</th>
+                    <th style="background-color:#B1A0C7;" rowspan="3">JOB NO</th>
+                    <th style="background-color:#8DB4E2;" rowspan="3">JOB NAME</th>
+                    <th style="background-color:#D9D9D9;" rowspan="2" colspan="3">MATERIAL</th>
+                    <th style="background-color:#D9D9D9;" rowspan="2" colspan="3">PROCESS</th>
+                    <th colspan="{{defaultProcessSingle.length *2}}" style="text-align:center; background-color:#FFFF00;">PROCESS</th>
+                    <th style="background-color:#C4BD97;" rowspan="3">Scrap</th>
+                    <th style="background-color:#f1b9b9;" rowspan="2" colspan="2">Total</th>
+                    <th style="background-color:#92D050;" rowspan="3">PROFIT /LOSS</th>
+                </tr>
+
+                <tr>
+                    <th style="background-color:#FABF8F;" ng-repeat="x in defaultProcessSingle track by $index" colspan="2">{{x}}</th>
+                </tr>
+                <tr>
+                    <th style="background-color:#D9D9D9;">'QUO</th>
+                    <th style="background-color:#D9D9D9;">ACT</th>
+                    <th style="background-color:#D9D9D9;">Balance</th>
+                    <th style="background-color:#D9D9D9;">'QUO</th>
+                    <th style="background-color:#D9D9D9;">ACT</th>
+                    <th style="background-color:#D9D9D9;">Balance</th>
+                    <th style="background-color:#FABF8F;" ng-repeat="x in defaultProcess track by $index">{{$index %2 == 0?'Quo':'Act'}}</th>
+                    <th style="background-color:#f1b9b9;">'QUO</th>
+                    <th style="background-color:#f1b9b9;">ACT</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="(key, value) in pageData" ng-click = "open(pageData[key])">
+                    <td>{{pageData[key].startDate?pageData[key].startDate:pageData[key].createdAt|date : 'dd-MM-yy'}}</td>
+                    <td>{{pageData[key].client.name}}</td>
+                    <td>{{pageData[key].code}}</td>
+                    <td>{{pageData[key].name}}</td>
+                    <td>{{(pageData[key].totalMaterialCost?pageData[key].totalMaterialCost:"0.00")| currency:'':2}}</td>
+                    <td>{{(pageData[key].material.act?pageData[key].material.act.toFixed(2):"0.00")| currency:'':2}}</td>
+                    <td
+                     ng-class="(pageData[key].totalMaterialCost-pageData[key].material.act)>=0?' btn-success': ' btn-danger'">
+                     {{(pageData[key].totalMaterialCost-pageData[key].material.act)| currency:'':2}}</td>
+                    <td>{{(pageData[key].totalEstProcessCost?pageData[key].totalEstProcessCost:"0.00")| currency:'':2}}</td>
+                    <td>{{(pageData[key].totalActProcessCost?pageData[key].totalActProcessCost:"0.00")| currency:'':2}}</td>
+                    <td
+                     ng-class="(pageData[key].totalEstProcessCost-pageData[key].totalActProcessCost)>=0?' btn-success': ' btn-danger'">
+                     {{(pageData[key].totalEstProcessCost-pageData[key].totalActProcessCost)| currency:'':2}}</td>
+
+                 <!-- <td  ng-repeat="k in defaultProcess track by $index">{{multiply(pageData[key],k,$index,$parent.$last && $last)}}</td> -->
+                 <td  ng-repeat="k in defaultProcess track by $index">{{($index % 2 === 0 ?pageData[key].process[k].estamount :pageData[key].process[k].act)| currency:'':2}}</td>
+                    <td>{{(pageData[key].scrap?pageData[key].scrap.toFixed(2):"0.00")| currency:'':2}}</td>
+                    <td>{{(pageData[key].totalEstCost.toFixed(2))| currency:'':2}}</td>
+                    <td>{{(pageData[key].totalActCost.toFixed(2))| currency:'':2}}</td>
+                    <td ng-class="(pageData[key].totalEstCost-pageData[key].totalActCost)>=0?' btn-success': ' btn-danger'">{{((pageData[key].totalEstCost-pageData[key].totalActCost).toFixed(2))| currency:'':2}}</td>
+               </tr>
+               <tr ng-if="includeMe">
+                  <th style="background-color:#D9D9D9;"></th>
+                  <th style="background-color:#D9D9D9;"></th>
+                  <th style="background-color:#D9D9D9;"></th>
+                  <th style="background-color:#D9D9D9;"></th>
+                  <th style="background-color:#D9D9D9;">{{cSum.material.est| currency:'':2}}</th>
+                  <th style="background-color:#D9D9D9;">{{cSum.material.act| currency:'':2}}</th>
+                  <th style="background-color:#D9D9D9;">{{cSum.materialBalance| currency:'':2}}</th>
+                  <th style="background-color:#D9D9D9;">{{cSum.processTotal.est| currency:'':2}}</th>
+                  <th style="background-color:#D9D9D9;">{{cSum.processTotal.act| currency:'':2}}</th>
+                  <th style="background-color:#D9D9D9;">{{cSum.processBalance| currency:'':2}}</th>
+                  <th style="background-color:#FABF8F;"
+                     ng-repeat="x in defaultProcess track by $index">
+                        {{($index %2 == 0?cSum.process[x].est:cSum.process[x].act?cSum.process[x].act.toFixed(2):0)| currency:'':2}}</th>
+                  <th style="background-color:#C4BD97;">{{cSum.scrap| currency:'':2}}</th>
+                  <th style="background-color:#f1b9b9;">{{cSum.total.est| currency:'':2}}</th>
+                  <th style="background-color:#f1b9b9;">{{cSum.total.act| currency:'':2}}</th>
+                  <th style="background-color:#92D050;">{{(cSum.total.est-cSum.total.act)| currency:'':2}}</th>
+               </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->

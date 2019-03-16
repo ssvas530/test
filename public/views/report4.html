@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+
+            <form class="form-horizontal" role="form" data-parsley-validate novalidate>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">Date Range</label>
+                        <div class="col-sm-8">
+                            <div class="input-daterange input-group" id="date-range">
+                                <input type="text" class="form-control" id="start"/>
+                                <span class="input-group-addon bg-primary b-0 text-white">to</span>
+                                <input type="text" class="form-control" id="end"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				 <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="hori-pass1" class="col-sm-4 control-label">JOB</label>
+                        <div class="col-sm-7">
+                            <div angucomplete-alt id="userclient" placeholder="Search Job" pause="400"
+                                 selected-object="selectJob" remote-url="/api/job/searchJob/"
+                                 remote-url-data-field="result" title-field="title" input-class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-5 col-sm-8">
+                        <a ng-disabled="disableMe" type="submit" class="btn btn-primary waves-effect waves-light" ng-click="find()">
+                            Search <i class="fa fa-search"></i>
+                        </a>
+                        <!-- <a type="submit" class="btn btn-primary waves-effect waves-light"
+                           ng-click="exportToExcel('#exportthis')">
+                            Download Excel <i class="fa fa-download"></i>
+                        </a> -->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div><!-- end col -->
+</div>
+
+<div id="exportthis" ng-show="showMe" class="row ng-hide">
+    <div class="col-sm-12">
+        <div class="card-box table-responsive">
+            <h4 class="header-title m-t-0 m-b-30">JOB-PROCESS REPORT</h4>
+            <table ng-if="includeMe" id="datatable" border="1"  style="text-color:#000000;"><!-- id="datatable" -->
+                <thead>
+                   <tr>
+                       <th colspan="1">Sl No</th>
+                       <th colspan="1">Start Date</th>
+                       <th colspan="1">End Date</th>
+                       <th colspan="1">Created Date</th>
+                       <th colspan="1">Job</th>
+                       <th colspan="1">Status</th>
+                       <th>Download</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="r in pageData">
+                   <td>{{pageData.length - $index}}</td>
+                    <td>{{r.sDate |date:'dd-MM-yy'}}</td>
+                    <td>{{r.eDate |date:'dd-MM-yy'}}</td>
+                    <td>{{r.createdAt |date:'dd-MM-yy hh:mm'}}</td>
+                    <td>{{r.job?r.job.code:""}}</td>
+                    <td>{{r.status}}</td>
+                    <td>
+                       <button ng-disabled="{{r.status!='completed'}}" style="width:100%"
+                        ng-click="downloadFile(r._id,r.job?r.job.code:'')" type="button"
+                        class="btn btn-info waves-effect waves-light">
+                       <i class="fa fa-download"></i></button>
+                    </td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->

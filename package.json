@@ -1,0 +1,45 @@
+{
+  "name": "Longe-Feedback",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "istanbul cover _mocha",
+    "start": "node ./bin/www"
+  },
+  "main": "www",
+  "dependencies": {
+    "async": "^2.6.0",
+    "bluebird": "^3.4.6",
+    "body-parser": "~1.13.2",
+    "compression": "^1.6.1",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "ejs": "~2.3.3",
+    "excel4node": "^1.3.5",
+    "express": "~4.13.1",
+    "express-session": "^1.12.1",
+    "kerberos": "0.0.17",
+    "moment": "^2.11.2",
+    "mongodb": "^2.2.10",
+    "mongojs": "^2.4.1",
+    "mongoose": "^4.3.4",
+    "mongoose-thumbnail": "0.0.1",
+    "morgan": "~1.6.1",
+    "multer": "^1.1.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^3.1.0",
+    "path": "^0.12.7",
+    "pdfmake": "^0.1.18",
+    "serve-favicon": "~2.3.0",
+    "underscore": "^1.8.3",
+    "wiredep": "^4.0.0",
+    "xlsx": "^0.8.0"
+  },
+  "devDependencies": {
+    "istanbul": "^0.3.17",
+    "mocha": "^2.2.5",
+    "asserts": "4.0.2",
+    "supertest": "^1.1.0"
+  }
+}

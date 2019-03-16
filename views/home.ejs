@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <title>Prox</title>
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/angular-data-table/release/dataTable.css" />
+        <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+        <!-- endbower -->
+
+        <!--Morris Chart CSS -->
+		<!-- <link rel="stylesheet" href="assets/plugins/morris/morris.css"> -->
+
+        <!-- App css -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+
+
+        <!-- <link href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet"> -->
+
+        <!-- DataTables -->
+        <link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+        <link href="style/main.css" rel="stylesheet" type="text/css" />
+        <link href="style/nv.d3.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Notification css (Toastr) -->
+        <link href="assets/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+
+
+         <!-- Angucomplete search on server -->
+         <link href="style/angucomplete-alt.css" rel="stylesheet" type="text/css" />
+         <link href="style/select.css" rel="stylesheet" type="text/css" />
+         <link href="style/selectize.css" rel="stylesheet" type="text/css" />
+
+
+         <link href="style/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css" />
+
+        <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- ANGULAR SCRIPTS -->
+        <!-- <script src="//code.angularjs.org/1.5.8/angular.js"></script> -->
+        <!-- <script src="https://code.angularjs.org/1.4.8/angular-route.js"></script> -->
+        <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script> -->
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="scripts/angular.js"></script>
+        <script src="scripts/angular-ui-router.min.js"></script>
+        <script src="scripts/angular-sanitize.js"></script>
+        <!-- bower:js -->
+        <!-- <script src="bower_components/angular-data-table/release/dataTable.js"></script> -->
+        <!-- <script src="bower_components/angular/angular.js"></script> -->
+        <!-- <script src="bower_components/jquery/dist/jquery.js"></script> -->
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/moment/moment.js"></script>
+        <script src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="bower_components/angular-eonasdan-datetimepicker/dist/angular-eonasdan-datetimepicker.js"></script>
+        <script src="bower_components/pdfmake/build/pdfmake.js"></script>
+        <script src="bower_components/pdfmake/build/vfs_fonts.js"></script>
+        <!-- endbower -->
+
+    <!-- <script src="https://cdn.datatables.net/plug-ins/1.10.16/sorting/date-uk.js"></script> -->
+    <script src="scripts/moment.min.js"></script>
+
+        <script src="scripts/ui-bootstrap-tpls-2.0.1.js"></script>
+        <script src="scripts/angucomplete-alt.js"></script>
+        <script src="scripts/select.js"></script>
+        <script src="scripts/app.js"></script>
+        <!-- <script src="scripts/controllers/main.js"></script> -->
+        <script src="scripts/directives/validNumber.js"></script>
+        <script src="scripts/services/ginfo.js"></script>
+        <script src="scripts/services/server.js"></script>
+        <script src="scripts/services/themeInit.js"></script>
+        <script src="scripts/services/emp.js"></script>
+        <script src="scripts/services/supplier.js"></script>
+        <script src="scripts/services/materialT.js"></script>
+        <script src="scripts/services/department.js"></script>
+        <script src="scripts/services/client.js"></script>
+    <script src="scripts/services/processreport.js"></script>
+    <script src="scripts/services/process.js"></script>
+    <script src="scripts/services/expense.js"></script>
+        <script src="scripts/services/job.js"></script>
+        <script src="scripts/services/role.js"></script>
+        <script src="scripts/services/supplier.js"></script>
+        <script src="scripts/services/material.js"></script>
+        <script src="scripts/services/scrap.js"></script>
+        <script src="scripts/services/effort.js"></script>
+        <script src="scripts/services/scrapEffort.js"></script>
+        <script src="scripts/services/product.js"></script>
+        <script src="scripts/services/purchaseOrder.js"></script>
+        <script src="scripts/services/productPurchase.js"></script>
+        <script src="scripts/services/excel.js"></script>
+        <script src="scripts/services/report4.js"></script>
+
+        <script src="scripts/controllers/emp.js"></script>
+        <script src="scripts/controllers/empDetail.js"></script>
+        <script src="scripts/controllers/empNew.js"></script>
+        <script src="scripts/controllers/supplier.js"></script>
+        <script src="scripts/controllers/supplierDetail.js"></script>
+        <script src="scripts/controllers/supplierNew.js"></script>
+        <script src="scripts/controllers/department.js"></script>
+        <script src="scripts/controllers/departmentDetail.js"></script>
+        <script src="scripts/controllers/departmentNew.js"></script>
+        <script src="scripts/controllers/materialT.js"></script>
+        <script src="scripts/controllers/materialTDetail.js"></script>
+        <script src="scripts/controllers/materialTNew.js"></script>
+        <script src="scripts/controllers/client.js"></script>
+        <script src="scripts/controllers/clientDetail.js"></script>
+        <script src="scripts/controllers/clientNew.js"></script>
+        <script src="scripts/controllers/process.js"></script>
+        <script src="scripts/controllers/jobReportModal.js"></script>
+        <script src="po_report/poReport.modal.js"></script>
+    <script src="scripts/controllers/processReport.js"></script>
+    <script src="scripts/controllers/report4.js"></script>
+
+    <script src="scripts/controllers/processDetail.js"></script>
+        <script src="scripts/controllers/processNew.js"></script>
+    <script src="scripts/controllers/expenseReport.js"></script>
+        <script src="scripts/controllers/job.js"></script>
+        <script src="scripts/controllers/jobDetail.js"></script>
+        <script src="scripts/controllers/jobNew.js"></script>
+        <script src="scripts/controllers/jobProcess.js"></script>
+        <script src="scripts/controllers/role.js"></script>
+        <script src="scripts/controllers/roleDetail.js"></script>
+        <script src="scripts/controllers/roleNew.js"></script>
+        <script src="scripts/controllers/material.js"></script>
+        <script src="scripts/controllers/scrap.js"></script>
+        <script src="scripts/controllers/effort.js"></script>
+        <script src="scripts/controllers/effortNew.js"></script>
+        <script src="scripts/controllers/effortDetail.js"></script>
+        <script src="scripts/controllers/scrapEffort.js"></script>
+        <script src="scripts/controllers/scrapEffortNew.js"></script>
+        <script src="scripts/controllers/jobReport.js"></script>
+        <script src="scripts/controllers/effortReport.js"></script>
+        <script src="scripts/controllers/product.js"></script>
+        <script src="scripts/controllers/productDetail.js"></script>
+        <script src="scripts/controllers/productNew.js"></script>
+        <script src="scripts/controllers/purchaseOrder.js"></script>
+        <script src="scripts/controllers/purchaseOrderDetail.js"></script>
+        <script src="scripts/controllers/purchaseOrderNew.js"></script>
+        <script src="scripts/controllers/productPurchase.js"></script>
+
+       <!-- <script src="scripts/controllers/locations.js"></script>
+        <script src="scripts/controllers/airlines.js"></script>
+        <script src="scripts/controllers/longes.js"></script>
+        <script src="scripts/controllers/questions.js"></script>
+        <script src="scripts/controllers/reports.js"></script>
+        <script src="scripts/controllers/summary.js"></script> -->
+
+
+        <script src="assets/js/modernizr.min.js"></script>
+
+
+    </head>
+
+    <style>
+
+            .select2 > .select2-choice.ui-select-match {
+                /* Because of the inclusion of Bootstrap */
+                height: 29px;
+            }
+
+            .selectize-control > .selectize-dropdown {
+                top: 36px;
+            }
+            /* Some additional styling to demonstrate that append-to-body helps achieve the proper z-index layering. */
+            .select-box {
+              background: #fff;
+              position: relative;
+              z-index: 1;
+            }
+            .alert-info.positioned {
+              margin-top: 1em;
+              position: relative;
+              z-index: 10000; /* The select2 dropdown has a z-index of 9999 */
+            }
+        </style>
+    <body class="fixed-left ng-hide" ng-app="myApp" ng-show="ginfo.isLoggedIn">
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Top Bar Start -->
+            <div class="topbar">
+
+                <!-- LOGO -->
+                <div class="topbar-left" style="background:none;">
+                    <a class="logo"><span>Pro<span>X</span></span><i class="zmdi zmdi-layers"></i></a>
+                </div>
+
+                <!-- Button mobile view to collapse sidebar menu -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+
+                        <!-- Page title -->
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <button class="button-menu-mobile open-left">
+                                    <i class="zmdi zmdi-menu"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <h4 class="page-title">{{ginfo.getUser().name.toUpperCase()}}</h4>
+                            </li>
+                        </ul>
+
+                        <!-- Right(Notification and Searchbox -->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <!-- Notification -->
+                                <div class="notification-box">
+                                    <ul class="list-inline m-b-0">
+                                        <li>
+                                            <a style="height:70px;" ng-click="logOff()" class="btn btn-primary right-bar-toggle">
+                                                <i class="zmdi zmdi-power"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- End Notification bar -->
+                            </li>
+                            <!-- <li class="hidden-xs">
+                                <form role="search" class="app-search">
+                                    <input type="text" placeholder="Search..."
+                                           class="form-control">
+                                    <a href="#"><i class="fa fa-search"></i></a>
+                                </form>
+                            </li> -->
+                        </ul>
+
+                    </div><!-- end container -->
+                </div><!-- end navbar -->
+            </div>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left side-menu" style="background-color: #ccc">
+               <!-- style="background-color: #2f353f"  -->
+                <div class="sidebar-inner slimscrollleft">
+
+                    <!-- User -->
+                    <!-- <div class="user-box">
+                        <div class="user-img">
+                            <img src="assets/images/users/avatar-1.jpg" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+                            <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
+                        </div>
+                        <h5><a href="#">Mat Helme</a> </h5>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="#" >
+                                    <i class="zmdi zmdi-settings"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="text-custom">
+                                    <i class="zmdi zmdi-power"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div> -->
+                    <!-- End User -->
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <ul>
+                        	<li class="text-muted menu-title">Navigation</li>
+
+                            <li>
+                                <a ng-hide="ginfo.isUsr()" ui-sref="home" class="waves-effect active"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                            </li>
+
+                            <li class="has_sub" ng-show="ginfo.isAdmin()">
+                                <a  class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span> Master Settings </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <!-- <li><a  ui-sref="master.department.list">Department</a></li> -->
+                                    <!-- <li><a  ui-sref="master.materialT.list">Material Type</a></li> -->
+                                    <li><a  ui-sref="master.supplier.list">Supplier</a></li>
+                                    <li><a ui-sref="master.process.list">Process</a></li>
+                                    <li><a  ui-sref="master.role.list">Role</a></li>
+                                    <li><a ui-sref="master.product.list">PR Items</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span> Record Management </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li ng-show="ginfo.isAdmin()"><a ui-sref="record.employee.list">Employee</a></li>
+                                    <li ng-show="ginfo.isAdmin()"><a ui-sref="record.customer.list">Customer</a></li>
+                                    <li ng-show="ginfo.isAdmin()"><a ui-sref="record.job.list">Job</a></li>
+                                    <li ng-show="ginfo.isAdmin()"><a ui-sref="record.material.list">Material Cost</a></li>
+                                    <li ng-show="ginfo.isAdmin()"><a ui-sref="record.scrap.list">Scrap Material</a></li>
+                                    <li ng-show="ginfo.isAdmin()"><a ui-sref="scrapEffort.new">Scrap Effort</a></li>
+                                    <li><a ui-sref="record.purchaseOrder.list">Purchase request</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub" ng-show="ginfo.isAdmin()">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span> Effort </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a ui-sref="effort.list">Employee-Effort</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub" ng-show="false">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span> Activity </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a ui-sref="employeeActivity">Employee Activity</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span> Report Generation </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li ng-hide="ginfo.isUsr()"><a ui-sref="jobReport">Job Report</a></li>
+                                    <!--<li ng-hide="ginfo.isUsr()"><a ui-sref="expenseReport">Expense Report</a></li>-->
+                                    <li ng-hide="ginfo.isUsr()"><a ui-sref="processReport">Job Estimated/Actual Report</a></li>
+                                    <li ng-hide="ginfo.isUsr()"><a ui-sref="report4">Job Process Report</a></li>
+                                    <li><a ui-sref="effortReport">Employee Effort Report</a></li>
+                                       <!-- <li><a ui-sref="summaryReport">Summary Report</a></li> -->
+                                </ul>
+                            </li>
+
+                            <li class="has_sub" ng-show="ginfo.isUsr()">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span> Effort </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a ui-sref="effort.list">Effort List</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- Sidebar -->
+                    <div class="clearfix"></div>
+
+                </div>
+
+            </div>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
+                       <div class="row" style="height:10px;">
+                       </div>
+                       <div ui-view>
+                       </div>
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <footer class="footer text-right">
+                    2016 © Prox.
+                </footer>
+
+            </div>
+
+
+        </div>
+        <!-- END wrapper -->
+
+
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- jQuery  -->
+        <!-- <script src="assets/js/jquery.min.js"></script> -->
+        <!-- <script src="assets/js/bootstrap.min.js"></script> -->
+        <script src="assets/js/detect.js"></script>
+        <script src="assets/js/fastclick.js"></script>
+        <script src="assets/js/jquery.blockUI.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.nicescroll.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
+
+        <!-- Date Picker-->
+        <script src="assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+        <!-- Datatables-->
+        <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
+        <!-- Datatable init js -->
+        <script src="assets/pages/datatables.init.js"></script>
+        <script>
+           TableManageButtons.init();
+        </script>
+
+
+        <!-- Toastr js -->
+        <script src="assets/plugins/toastr/toastr.min.js"></script>
+        <script>
+              toastr.options = {
+                 "closeButton": false,
+                 "debug": false,
+                 "newestOnTop": false,
+                 "progressBar": false,
+                 "positionClass": "toast-top-right",
+                 "preventDuplicates": false,
+                 "onclick": null,
+                 "showDuration": "300",
+                 "hideDuration": "1000",
+                 "timeOut": "5000",
+                 "extendedTimeOut": "1000",
+                 "showEasing": "swing",
+                 "hideEasing": "linear",
+                 "showMethod": "fadeIn",
+                 "hideMethod": "fadeOut"
+               }
+        </script>
+        <!-- KNOB JS -->
+        <!--[if IE]>
+        <script type="text/javascript" src="assets/plugins/jquery-knob/excanvas.js"></script>
+        <![endif]-->
+        <script src="assets/plugins/jquery-knob/jquery.knob.js"></script>
+
+
+        <!-- Validation js (Parsleyjs) -->
+        <script type="text/javascript" src="assets/plugins/parsleyjs/dist/parsley.min.js"></script>
+
+        <!--Morris Chart-->
+		<!-- <script src="assets/plugins/morris/morris.min.js"></script>
+		<script src="assets/plugins/raphael/raphael-min.js"></script> -->
+
+        <!-- Dashboard init -->
+        <!-- <script src="assets/pages/jquery.dashboard.js"></script> -->
+
+        <!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+<!--
+      <script src="scripts/bootstrap-datetimepicker.min.js"></script>
+        <script src="scripts/angular-eonasdan-datetimepicker.js"></script> -->
+       <script src="scripts/d3.min.js"></script>
+      <script src="scripts/nv.d3.min.js"></script>
+       <script src="scripts/angular-nvd3.js"></script>
+    </body>
+
+</html>

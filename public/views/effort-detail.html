@@ -1,0 +1,120 @@
+
+<div class="row">
+    <div class="col-sm-12">
+       <!-- <div class="card-box table-responsive"> -->
+<form role="form">
+         <h4 class="header-title m-t-0 m-b-30 ng-hide" ng-show="showMe">JOB EFFORT EDIT </h4>
+<div class=" form-group">
+
+            <table id="datatable" class="table" style="min-height:400px;">
+               <!-- table-striped table-bordered  -->
+                <thead>
+                    <tr>
+                       <th>#</th>
+                       <th ng-show="ginfo.isAdmin()">Employee</th>
+                       <th>Process</th>
+                       <th>ST DT TIME</th>
+                       <th>END DT TIME</th>
+                       <th>Part/Category No</th>
+                       <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="x in jobEffort">
+                       <td>{{$index+1}}</td>
+                       <td ng-if="ginfo.isAdmin()">
+                          <!-- <select class="form-control" ng-options="item as item.name for item in userList track by item._id" ng-model="x.user"></select> -->
+                          <div initial-value ="x.user" angucomplete-alt placeholder="Search Employee" pause="400" selected-object="selectEmp" remote-url="/api/user/searchEmp/" remote-url-data-field="result" title-field="code,name" input-class="form-control">
+                       </td>
+                       <td>
+                          <select class="form-control" ng-options="item as item.name for item in processList track by item._id" ng-model="x.process"></select>
+                       </td>
+                       <td ng-if="ginfo.isUsr()">
+                          <div class="input-group">
+                            <input ng-disabled="ginfo.isUsr()" ng-model="x.start" type="text" class="form-control" placeholder="start time" id="datepicker">
+                            <span ng-click="setStartTime(x,ginfo.isUsr())" class="input-group-addon bg-primary b-0 text-white"><i class="ti-time"></i></span>
+                          </div>
+                       </td>
+                       <td ng-if="ginfo.isAdmin()">
+                          <div class="input-group dTP" >
+                             <input datetimepicker options="options" ng-model="x.start"  type="text" class="form-control" placeholder="start time"/>
+                             <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                             </span>
+                          </div>
+                       </td>
+                       <td ng-if="ginfo.isUsr()">
+                          <div class="input-group">
+                            <input ng-disabled="ginfo.isUsr()" ng-model="x.stop" type="text" class="form-control" placeholder="stop time" id="datepicker">
+                            <span ng-click="setStopTime(x,(ginfo.isUsr() && x.stop))" class="input-group-addon bg-primary b-0 text-white"><i class="ti-time"></i></span>
+                          </div>
+                       </td>
+                       <td ng-if="ginfo.isAdmin()">
+                          <div class="input-group dTP">
+                             <input datetimepicker options="options" ng-model="x.stop" placeholder="stop time" type="text" class="form-control" />
+                             <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                             </span>
+                          </div>
+                       </td>
+                       <td>
+                          <input type="text" class="form-control" required placeholder="Part Number" ng-model="x.partNo"/>
+                       </td>
+                        <td>
+                          <button type="submit" ng-click="update(x)" class="btn waves-effect waves-light btn-info m-b-5 btn-md">
+                             <i class="fa fa-floppy-o"></i>
+                          </button>
+                        </td>
+                        <td>
+                          <a class="btn waves-effect waves-light btn-danger m-b-5 btn-md "
+                          ng-click="edit(x)" data-toggle="modal"
+                          data-target=".bs-example-modal-sm">
+                             <i class="fa fa-trash-o"></i>
+                          </a>
+                       </td>
+                    </tr>
+                 </form>
+               </tbody>
+            </table>
+</div>
+         </form>
+       </div>
+
+    <!-- </div> -->
+    <!-- end col -->
+
+</div>
+<!-- end row -->
+
+<!-- <div class="row">
+      <div class="col-sm-6">
+      <div class="m-b-30">
+         <div class="input-group ng-hide" ng-show="showMe">
+            <h4 class="header-title m-t-0 m-b-30">TOTAL COST</h4>
+            <button type="button" class="btn waves-effect waves-light btn-primary btn-md">{{getTotal()}}</button>
+         </div>
+      </div>
+      </div>
+</div> -->
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+   <div class="modal-dialog modal-sm">
+       <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="mySmallModalLabel">Confirm</h4>
+            </div>
+            <div class="modal-body">
+             Remove this process?
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+               <button onclick="$('.modal').modal('hide')"
+                  ng-click="delete()" type="button" data-dismiss="modal"
+                  class="btn btn-danger waves-effect waves-light">Delete
+                  <i class="fa fa-trash-o"></i></button>
+            </div>
+       </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

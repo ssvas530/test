@@ -1,0 +1,2 @@
+
+require('wiredep')({ src: 'views/home.ejs' });//,ignorePath: '../..'

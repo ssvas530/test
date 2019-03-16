@@ -1,0 +1,63 @@
+
+<div class="row" style=" z-index: 999;position: fixed; width: 100%;top: 70px">
+      <div class="col-sm-12 navbarcolor1" style="padding: 0px; margin: 0px;">
+      <h4 class="header-title m-t-0 m-b-30 ng-hide" ng-show="showMe">JOB EFFORT LIST {{'for ' +report.job.title}}</h4>
+   </div>
+</div>
+<div class="row" style="margin-top: 35px">
+<div class="col-sm-12">
+   <div class="card-box">
+
+    <h4 class="header-title m-t-0 m-b-30">FILTER</h4>
+
+       <form class="form-horizontal" role="form" data-parsley-validate novalidate>
+          <div class="col-lg-12 input-group" style="">
+             <div angucomplete-alt id="userclient" placeholder="Search Job" pause="400" selected-object="select" remote-url="/api/job/searchJob/" remote-url-data-field="result" title-field="title" input-class="form-control">
+             </div>
+          </div>
+         <div style="height:10px;">
+        </div>
+         <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-8">
+                 <a type="submit" class="btn btn-primary waves-effect waves-light" ng-click="find()">
+                    Search <i class="fa fa-search"></i>
+                 </a>
+                 <a type="submit" class="btn btn-primary waves-effect waves-light" ng-click="downloadExcel()">
+                    Download EXCEL <i class="fa fa-download"></i>
+                 </a>
+            </div>
+         </div>
+       </form>
+   </div>
+</div><!-- end col -->
+</div>
+
+<div class="row">
+   <div class="col-lg-6">
+      <div class="card-box" style="background-color: #fff;">
+
+               <h4 class="header-title m-t-0 m-b-30">Estimated Cost vs Actual Cost</h4>
+
+         <nvd3 options="bar.options" data="bar.data"></nvd3>
+      </div>
+   </div><!-- end col-->
+
+   <div class="col-lg-6">
+      <div class="card-box" style="background-color: #fff;">
+
+               <h4 class="header-title m-t-0 m-b-30">Actual Cost Breakdown</h4>
+
+         <nvd3 options="pi.options" data="pi.data"></nvd3>
+      </div>
+   </div><!-- end col-->
+</div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-sm-12">
+       <div class="card-box table-responsive">
+         <div ng-show="showMe" class="row ng-hide" ng-include src="'partials/jobReport.html'"></div>
+      </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->

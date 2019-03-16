@@ -1,0 +1,114 @@
+<div class="row">
+<div class="col-sm-12">
+   <div class="card-box">
+
+    <h4 class="header-title m-t-0 m-b-30">JOB MASTER</h4>
+
+       <form ng-if="!hideMe" class="form-horizontal" role="form" validate ng-submit="save()">
+          <div class="col-lg-6">
+            <div class="form-group">
+               <label for="hori-pass1" class="col-sm-4 control-label">Job Id*</label>
+               <div class="col-sm-7">
+                    <input id="hori-pass1" type="text" placeholder="id" required
+                          class="form-control" ng-model="job.code">
+               </div>
+            </div>
+            <div class="form-group">
+               <label for="hori-pass2" class="col-sm-4 control-label">Job Name*</label>
+               <div class="col-sm-7">
+                    <input id="hori-pass2" type="text" placeholder="name" required
+                          class="form-control" ng-model="job.name">
+               </div>
+            </div>
+            <div class="form-group">
+               <label for="hori-pass3" class="col-sm-4 control-label">Estimated Job Amount*</label>
+               <div class="col-sm-7">
+                     <input valid-number type="text"
+                           class="form-control" required
+                           placeholder="amount" ng-model="job.amount"/>
+                    <!-- <input id="hori-pass3" type="number" placeholder="amount" required
+                          class="form-control" ng-model="job.amount"> -->
+               </div>
+			</div>
+             <div class="form-group">
+					<label for="hori-pass8" class="col-sm-4 control-label">Estimated Material Amount</label>
+                  <div class="col-sm-7">
+                        <input valid-number type="text"
+                              class="form-control" required
+                              placeholder="amount" ng-model="job.totalMaterialCost"/>
+                  </div>
+			</div>
+         <div class="form-group">
+					<label for="hori-pass8" class="col-sm-4 control-label">Estimated Process Cost</label>
+                  <div class="col-sm-7">
+                        <input valid-number type="text"
+                              class="form-control" required
+                              placeholder="amount" ng-model="job.totalProcessCost"/>
+                  </div>
+			</div>
+         <div class="form-group">
+           <label for="hori-pass3" class="col-sm-4 control-label">PO Amount</label>
+           <div class="col-sm-7">
+                  <input valid-number type="text"
+                        class="form-control" required
+                        placeholder="amount" ng-model="job.poAmount"/>
+           </div>
+      </div>
+         </div>
+         <div class="col-lg-6">
+           <div class="form-group">
+             <label for="hori-pass1" class="col-sm-4 control-label">Customer*</label>
+             <div class="col-sm-7">
+                <!-- <div class="input-group">
+                   <div angucomplete-alt id="userclient" class="col-md-4" placeholder="Search clients" pause="400" selected-object="selectedClient" remote-url="/api/v1/client/search/" remote-url-data-field="data" title-field="name" description-field="detail" input-class="form-control form-control-small">
+                   </div>
+                   <span ng-click="addUserMapping(selectedClient.originalObject)" class="input-group-addon bg-primary b-0 text-white"><i class="ti-lock"></i></span>
+                </div> -->
+                <select class="form-control" ng-options="item as item.name for item in clientList track by item._id" ng-model="job.client"></select>
+             </div>
+           </div>
+           <div class="form-group">
+             <label class="col-sm-4 control-label">Actual Job start date</label>
+             <div class="col-sm-7">
+                <div class="input-group dTP">
+                   <input datetimepicker options="options" ng-model="job.startDate" placeholder="Start Date" type="text" class="form-control" />
+                   <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                   </span>
+                </div>
+             </div>
+         </div>
+         <div ng-show="edit" class="form-group">
+           <label class="col-sm-4 control-label">Job date</label>
+           <div class="col-sm-7">
+             <div class="input-group dTP">
+                 <input ng-disabled="edit" datetimepicker options="options" ng-model="job.createdAt" placeholder="Start Date" type="text" class="form-control" />
+                 <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                 </span>
+             </div>
+           </div>
+       </div>
+           <div class="form-group">
+             <label for="hori-pass5" class="col-sm-4 control-label">Comments</label>
+             <div class="col-sm-7">
+                   <textarea rows="3"
+                        class="form-control" ng-model="job.comment"></textarea>
+             </div>
+        </div>
+         </div>
+         <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-8">
+                 <button type="submit" class="btn btn-primary waves-effect waves-light">
+                    <i class="fa fa-floppy-o"></i>
+                 </button>
+                 <a type="reset" ui-sref="record.job.list"
+                         class="btn btn-default waves-effect waves-light m-l-5">
+                    <i class="fa fa-trash-o"></i>
+                 </a>
+            </div>
+         </div>
+       </form>
+   </div>
+</div><!-- end col -->
+</div>

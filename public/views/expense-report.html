@@ -1,0 +1,92 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+
+            <!-- <h4 class="header-title m-t-0 m-b-30">FILTER</h4> -->
+
+            <form class="form-horizontal" role="form" data-parsley-validate novalidate>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">Date Range</label>
+                        <div class="col-sm-8">
+                            <div class="input-daterange input-group" id="date-range">
+                                <input type="text" class="form-control" id="start" />
+                                <span class="input-group-addon bg-primary b-0 text-white">to</span>
+                                <input type="text" class="form-control" id="end" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="hori-pass1" class="col-sm-4 control-label">JOB</label>
+                        <div class="col-sm-7">
+                            <div angucomplete-alt id="userclient" placeholder="Search Job" pause="400" selected-object="selectJob" remote-url="/api/job/searchJob/" remote-url-data-field="result" title-field="title" input-class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-5 col-sm-8">
+                        <a type="submit" class="btn btn-primary waves-effect waves-light" ng-click="find()">
+                            Search <i class="fa fa-search"></i>
+                        </a>
+                        <!--<a type="submit" class="btn btn-primary waves-effect waves-light" ng-click="download()">-->
+                        <!--Download EXCEL <i class="fa fa-download"></i>-->
+                        <!--</a>-->
+                        <a type="submit" class="btn btn-primary waves-effect waves-light" ng-click="downloadpdf()">
+                            Download PDF <i class="fa fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div><!-- end col -->
+</div>
+
+<div id="exportthis" ng-show="showMe" class="row ng-hide">
+    <div class="col-sm-12">
+        <div class="card-box table-responsive">
+
+            <h4 class="header-title m-t-0 m-b-30">EXPENSE LIST</h4>
+            <!--<label> Total Regular Time :</label>
+
+
+
+             <h6>
+               {{getTotal()}}
+             </h6>-->
+
+
+            <table id="datatable" class="table table-striped table-bordered"><!-- id="datatable" -->
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Job_Id</th>
+                    <th>Job</th>
+                    <th>Total Scrap Cost</th>
+                    <th>Total Material Cost</th>
+                    <th>Total Process Cost</th>
+                    <th>Total Effort Cost</th>
+                    <th>Grand Total</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="x in pageData |filter: x as filteredStuff">
+                    <td>{{$index+1}}</td>
+                    <td>{{x.jobid}}</td>
+                    <td>{{x.jobname}}</td>
+                    <td>{{x.totalscrapcost}}</td>
+                    <td>{{x.totalmaterialcost}}</td>
+                    <td>{{x.totalprocesscost}}</td>
+                    <td>{{x.totalscrapeffortcost}}</td>
+                    <td>{{x.grandTotal}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->

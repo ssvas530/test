@@ -1,0 +1,102 @@
+<div class="row">
+<div class="col-sm-12">
+   <div class="card-box">
+
+    <!-- <h4 class="header-title m-t-0 m-b-30">FILTER</h4> -->
+
+       <form class="form-horizontal" role="form" data-parsley-validate novalidate>
+          <div class="col-lg-6">
+             <div class="form-group">
+               <label class="control-label col-sm-4">Date Range</label>
+               <div class="col-sm-8">
+                  <div class="input-daterange input-group" id="date-range">
+                     <input type="text" class="form-control" id="start" />
+                     <span class="input-group-addon bg-primary b-0 text-white">to</span>
+                     <input type="text" class="form-control" id="end" />
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-6">
+            <div class="form-group">
+               <label for="hori-pass1" class="col-sm-4 control-label">JOB</label>
+               <div class="col-sm-7">
+                  <div angucomplete-alt id="userclient" placeholder="Search Job" pause="400" selected-object="selectJob" remote-url="/api/job/searchJob/" remote-url-data-field="result" title-field="title" input-class="form-control">
+                  </div>
+               </div>
+            </div>
+            <div ng-hide="ginfo.isUsr()" class="form-group">
+               <label for="hori-pass1" class="col-sm-4 control-label">EMPLOYEE</label>
+               <div class="col-sm-7">
+                  <div angucomplete-alt placeholder="Search Employee" pause="400" selected-object="selectEmp" remote-url="/api/user/searchEmp/" remote-url-data-field="result" title-field="code,name" input-class="form-control">
+                  </div>
+               </div>
+            </div>
+        </div>
+         <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-8">
+                 <a type="submit" class="btn btn-primary waves-effect waves-light" ng-click="find()">
+                    Search <i class="fa fa-search"></i>
+                 </a>
+                 <a type="submit" class="btn btn-primary waves-effect waves-light" ng-click="download()">
+                    Download EXCEL <i class="fa fa-download"></i>
+                 </a>
+            </div>
+         </div>
+       </form>
+   </div>
+</div><!-- end col -->
+</div>
+
+<div ng-show="showMe" class="row ng-hide">
+    <div class="col-sm-12">
+       <div class="card-box table-responsive">
+
+         <h4 class="header-title m-t-0 m-b-30">JOB LIST</h4>
+<!--<label> Total Regular Time :</label>
+
+
+
+ <h6>
+   {{getTotal()}}
+ </h6>-->
+
+
+            <table id="datatable" class="table table-striped table-bordered"><!-- id="datatable" -->
+                <thead>
+                    <tr>
+                       <th>#</th>
+                       <th>Emp</th>
+                       <th>Job No</th>
+                       <th>Job Name</th>
+                       <th>Process</th>
+                       <th>Categry/Part No.</th>
+                       <th>ST Time</th>
+                       <th>EN Time</th>
+                       <th>Regular</th>
+                       <th>Overtime</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="x in pageData |filter: x as filteredStuff">
+                       <td>{{$index+1}}</td>
+                       <td>{{x.user.name}}</td>
+                       <td>{{x.job.code}}</td>
+                       <td>{{x.job.name}}</td>
+                       <td>{{x.process.name}}</td>
+                       <td>{{x.partNo}}</td>
+                       <td>{{x.start | date:'dd-MM-yyyy hh:mm a'}}</td>
+                       <td>{{x.stop| date:'dd-MM-yyyy hh:mm a'}}</td>
+                       <td>{{hourMinute(x.total-x.overtime)}}</td>
+                       <td>{{hourMinute(x.overtime)}}</td>
+
+ <label style="color:darkslategray;font-size: 17px">
+ <h6 style="color:darkslategray;font-size: 15px"> Total Regular Time: {{calculateTotal(filteredStuff)}} </t> &nbsp Total Overtime: {{calculateTotal2(filteredStuff)}}
+                    &nbsp </t> <span style="font-size: 17dp"><b>Total:{{calculateTotal3(filteredStuff)}}</b></span> </label></h6></tr>
+               </tbody>
+            </table>
+       </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->

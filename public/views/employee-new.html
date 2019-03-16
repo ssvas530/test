@@ -1,0 +1,111 @@
+<div class="row">
+<div class="col-sm-12">
+   <div class="card-box">
+
+    <h4 class="header-title m-t-0 m-b-30">EMPLOYEE MASTER</h4>
+
+       <form class="form-horizontal" role="form" data-parsley-validate novalidate>
+          <div class="col-lg-6">
+            <div class="form-group">
+               <label for="hori-pass1" class="col-sm-4 control-label">Emp Code*</label>
+               <div class="col-sm-7">
+                    <input ng-disabled="edit" id="hori-pass1" type="text" placeholder="code" required
+                          class="form-control" ng-model="user.code">
+               </div>
+            </div>
+            <div class="form-group">
+               <label class="control-label col-sm-4">DOB</label>
+               <div class="col-sm-7">
+                  <div class="input-group">
+                     <input type="text" class="form-control" placeholder="mm/dd/yyyy" datetimepicker options="options" ng-model="user.dob">
+                     <!--<span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>-->
+                      <span class="input-group-addon">
+                                   <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                  </div>
+               </div>
+            </div>
+            <div class="form-group">
+               <label for="hori-pass1" class="col-sm-4 control-label">Name*</label>
+               <div class="col-sm-7">
+                    <input id="hori-pass1" type="text" placeholder="Name" required
+                          class="form-control" ng-model="user.name">
+               </div>
+            </div>
+            <div class="form-group">
+               <label for="hori-pass1" class="col-sm-4 control-label">Username*</label>
+               <div class="col-sm-7">
+                    <input ng-disabled="edit" id="hori-pass1" type="text" placeholder="Username" required
+                          class="form-control" ng-model="user.username">
+               </div>
+            </div>
+            <div class="form-group">
+               <label for="hori-pass1" class="col-sm-4 control-label">Password*</label>
+               <div class="col-sm-7">
+                    <input id="hori-pass1" type="password" placeholder="Password" required
+                          class="form-control" ng-model="user.password">
+               </div>
+            </div>
+            <div class="form-group">
+               <label for="hori-pass1" class="col-sm-4 control-label">Role</label>
+               <div class="col-sm-7">
+                  <select class="form-control" ng-options="item as item for item in roleList" ng-model="user.role"></select>
+
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-6">
+           <div class="form-group">
+              <label for="inputEmail3" class="col-sm-4 control-label">Gender</label>
+              <div class="col-sm-7">
+                 <div class="radio radio-custom" ng-click="setGender('m')">
+                     <input type="radio" name="radio" id="radio1" value="option1" ng-checked="user.gender!='f'">
+                     <label for="radio1">
+                        Male
+                     </label>
+                 </div>
+                 <div class="radio radio-custom" ng-click="setGender('f')">
+                     <input type="radio" name="radio" id="radio03" value="option3" ng-checked="user.gender=='f'">
+                     <label for="radio03">
+                        Female
+                     </label>
+                 </div>
+              </div>
+           </div>
+           <div class="form-group">
+              <label for="hori-pass1" class="col-sm-4 control-label">Email</label>
+              <div class="col-sm-7">
+                   <input id="hori-pass1" type="email" parsley-type="email" placeholder="Email"
+                        class="form-control" ng-model="user.email">
+              </div>
+           </div>
+           <div class="form-group">
+             <label for="hori-pass1" class="col-sm-4 control-label">Mobile</label>
+             <div class="col-sm-7">
+                   <input id="hori-pass1" type="text" placeholder="Enter numbers only"
+                        class="form-control" ng-model="user.mobile">
+             </div>
+           </div>
+           <div class="form-group">
+             <label for="hori-pass1" class="col-sm-4 control-label">Address</label>
+             <div class="col-sm-7">
+                   <textarea rows="3"
+                        class="form-control" ng-model="user.address"></textarea>
+             </div>
+           </div>
+        </div>
+         <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-8">
+                 <a type="submit" class="btn btn-primary waves-effect waves-light" ng-click="save()">
+                    Save
+                 </a>
+                 <a type="reset" ui-sref="record.employee.list"
+                         class="btn btn-default waves-effect waves-light m-l-5">
+                    Cancel
+                 </a>
+            </div>
+         </div>
+       </form>
+   </div>
+</div><!-- end col -->
+</div>
